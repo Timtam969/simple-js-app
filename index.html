@@ -2,11 +2,34 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polkedex</title>
     <link href="CSS/styles.css" rel="stylesheet" type="text/css" />
+
   </head>
   <body>
+    <div class="container">
+      <header class="header">
+          <img  class="logo" src="Images/International_Pokémon_logo.svg" alt="Pokémon Logo">
+      </header>
+
+      <div class="content-wrapper">
+        <div class="search-wrapper">
+          <form class="search-bar" action="index.html" method="post">
+          <input type="search" id="search" placeholder="Search for attributes">
+          <button class="search_magnifier" type="submit"><img class="magnifier" src="Images/search.svg"></button>
+          </form>
+        </div>
+      </div>
+        <br>
+        <hr>
+        <br>
+      <div id="character_table"></div>
+      <br>
+      <div id="table_height"></div>
+
     <script src="JS/script.js"></script>
   </body>
+
 </html>
