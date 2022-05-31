@@ -1,4 +1,6 @@
 
+
+
 //Creation of IIFE function. Using this to ensure the use only as the Local variable.
 let pokemonRepository = (function() {
   let pokemonList = [
@@ -9,16 +11,34 @@ let pokemonRepository = (function() {
     {name: 'Wailord', height: 14.5, type:['Field','Water2'], abilities:['Oblivious','Water-veil','Pressure']},
   ];
 
-  return {
-    add: function(pokemon) {
-      pokemonList.push(pokemon);
-    },
-    getAll: function() {
-      return pokemonList;
+//let add = item => pokemonList.push(item);
+  function  add(item) {
+        if (
+            typeof item === "object" &&
+            "name" in item &&
+            "height" in item &&
+            "type" in item &&
+            "abilities" in item
+        ) {
+            pokemonList.push(item);
+        } else {
+            window.alert("Invalid Pokemon entry")
+        }
     }
-  };
+     //pokemonList.push(item);
+  let getAll = item => pokemonList
+   return {
+     add: add,
+     getAll: getAll
+ };
+})();
 
-  // border setup for the tables
+// add in new characters
+pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', 'Blaze']})
+//pokemonRepository.add('')
+
+let table_character = (function() {
+
   var html ="<table border= '4'>";
 
   html+='<thead>';
@@ -32,30 +52,24 @@ let pokemonRepository = (function() {
 
 // Looping throught the Array and populating the #character_table with information using a foreach loop
 // creation in the individual columns
-    pokemonList.forEach((character) => {
+
+    pokemonRepository.getAll().forEach((pokemonList) => {
+
       html+='<tr>';
-      html+='<td>' + character.name +'</td>';
-      html+='<td>' + character.height +'</td>';
-      html+='<td>' + character.type +'</td>';
-      html+='<td>' + character.abilities +'</td>';
+      html+='<td>' + pokemonList.name +'</td>';
+      html+='<td>' + pokemonList.height +'</td>';
+      html+='<td>' + pokemonList.type +'</td>';
+      html+='<td>' + pokemonList.abilities +'</td>';
       html+='</tr>';
     });
-    // creation of the table for the first table
+
     document.getElementById('character_table').innerHTML = html;
   })();
 
-  pokemonRepository.add({ name: 'Pikachu' });
+
 
 //Creation of IIFE function. Using this to ensure the use only as the Local variable.
 let table_height = (function() {
-
-  let pokemonList = [
-    {name: 'Charizard', height: 1.7, type:['Monster','Dragon'], abilities:['Blaze','Solor-Power']},
-    {name: 'Fearow', height: 1.2, type:['Flying'], abilities:['Keen-eye','Sniper']},
-    {name: 'Nidoking', height: 1.4, type:['Monster','Field'], abilities:['Poison-point','Rivalry','Sheer-force']},
-    {name: 'Tentacruel', height: 1.6, type:['Water3'], abilities:['Clear-body','Rain-dish','Liquid-ooze']},
-    {name: 'Wailord', height: 14.5, type:['Field','Water2'], abilities:['Oblivious','Water-veil','Pressure']},
-  ];
 
   // border setup for the tables
   var html2 ="<table border= '4'>";
@@ -70,8 +84,8 @@ let table_height = (function() {
 
     // Looping throught the Array and populating the #character_table with information using a foreach loop
     // creation in the individual columns
+    pokemonRepository.getAll().forEach((height) => {
 
-    pokemonList.forEach((height) => {
       // uses if else statement to locate the height attributes and then populate new table column
       if (height.height < 1.5) {
       html2+='<tr>';
