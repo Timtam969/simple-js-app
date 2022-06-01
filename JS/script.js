@@ -23,8 +23,9 @@ let pokemonRepository = (function() {
           Object.keys(item).forEach(function(property) {
             if (property === 'name', 'height', 'type', 'abilities') {
             console.log('Entry is correct')
-          } else if(item !== 'name', 'height', 'type', 'abilities')
+          } else {
           window.alert("Invalid Pokemon entry")
+        }
           });
             pokemonList.push(item);
         } else {
