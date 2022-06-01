@@ -4,11 +4,11 @@
 //Creation of IIFE function. Using this to ensure the use only as the Local variable.
 let pokemonRepository = (function() {
   let pokemonList = [
-    {name: 'Charizard', height: 1.7, type:['Monster','Dragon'], abilities:['Blaze','Solor-Power']},
-    {name: 'Fearow', height: 1.2, type:['Flying'], abilities:['Keen-eye','Sniper']},
-    {name: 'Nidoking', height: 1.4, type:['Monster','Field'], abilities:['Poison-point','Rivalry','Sheer-force']},
-    {name: 'Tentacruel', height: 1.6, type:['Water3'], abilities:['Clear-body','Rain-dish','Liquid-ooze']},
-    {name: 'Wailord', height: 14.5, type:['Field','Water2'], abilities:['Oblivious','Water-veil','Pressure']},
+    {name: 'Charizard ', height: 1.7, type:['Monster',' Dragon'], abilities:['Blaze',' Solor-Power']},
+    {name: 'Fearow', height: 1.2, type:['Flying'], abilities:['Keen-eye',' Sniper']},
+    {name: 'Nidoking', height: 1.4, type:['Monster',' Field'], abilities:['Poison-point',' Rivalry',' Sheer-force ']},
+    {name: 'Tentacruel', height: 1.6, type:['Water3'], abilities:['Clear-body',' Rain-dish',' Liquid-ooze']},
+    {name: 'Wailord', height: 14.5, type:['Field',' Water2'], abilities:['Oblivious',' Water-veil',' Pressure']},
   ];
 
 //let add = item => pokemonList.push(item);
@@ -20,10 +20,17 @@ let pokemonRepository = (function() {
             "type" in item &&
             "abilities" in item
         ) {
+          Object.keys(item).forEach(function(property) {
+            if (property === 'name', 'height', 'type', 'abilities') {
+            console.log('Entry is correct')
+          } else if(item !== 'name', 'height', 'type', 'abilities')
+          window.alert("Invalid Pokemon entry")
+          });
             pokemonList.push(item);
         } else {
             window.alert("Invalid Pokemon entry")
         }
+
     }
      //pokemonList.push(item);
   let getAll = item => pokemonList
@@ -34,7 +41,7 @@ let pokemonRepository = (function() {
 })();
 
 // add in new characters
-pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', 'Blaze']})
+pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze']})
 //pokemonRepository.add('')
 
 let table_character = (function() {
@@ -57,7 +64,7 @@ let table_character = (function() {
 
       html+='<tr>';
       html+='<td>' + pokemonList.name +'</td>';
-      html+='<td>' + pokemonList.height +'</td>';
+      html+='<td>' + pokemonList.height + 'm Tall' +'</td>';
       html+='<td>' + pokemonList.type +'</td>';
       html+='<td>' + pokemonList.abilities +'</td>';
       html+='</tr>';
@@ -90,7 +97,7 @@ let table_height = (function() {
       if (height.height < 1.5) {
       html2+='<tr>';
       html2+='<td>' + height.name +'</td>';
-      html2+='<td>' + height.height +'</td>';
+      html2+='<td>' + height.height + 'm Tall' +'</td>';
       // Adding a new table column to accept the if else conditions
       html2+='<td>' + "You're tiny!" +'</td>';
       html2+='</tr>';
@@ -98,14 +105,14 @@ let table_height = (function() {
     else if(height.height < 5) {
       html2+='<tr>';
       html2+='<td>' + height.name +'</td>';
-      html2+='<td>' + height.height +'</td>';
+      html2+='<td>' + height.height + 'm Tall' +'</td>';
       html2+='<td>' + "Standard but Strong!" +'</td>';
       html2+='</tr>';
     }
     else  {
       html2+='<tr>';
       html2+='<td>' + height.name + '</td>';
-      html2+='<td>' + height.height + '</td>';
+      html2+='<td>' + height.height + 'm Tall' +'</td>';
       html2+='<td>' + "You're Huge!" + '</td>';
       html2+='</tr>';
     }
@@ -113,3 +120,9 @@ let table_height = (function() {
       document.getElementById('table_height').innerHTML = html2;
   });
 })();
+
+
+// "name" in item &&
+// "height" in item &&
+// "type" in item &&
+// "abilities" in item
