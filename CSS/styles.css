@@ -49,18 +49,10 @@
   justify-content: space-between;
 }
 
-.search_magnifier {
-  background-color: transparent;
-  outline: 0;
-  box-sizing: 16px;
-  border: 0;
-  color: #fff;
-}
-
 .magnifier {
   width: 1rem;
   background-color: none;
-  margin-top: 3px;
+  margin: 3px;
 }
 
 .search-wrapper>input {
@@ -76,14 +68,15 @@
   outline: 0;
   background-color: transparent;
   border:none;
+  width: 100%;
 }
 
 #search::placeholder {
-  color: #fff;
+  background-color: none;
+  color: black;
 }
- input#search, .search-wrapper:hover, input#search, .search-wrapper:focus {
+ #search, .search-wrapper:hover, #search, .search-wrapper:focus {
     background-color: #a3a3a3ff;
-    color: #fff;
     padding: 5px;
     outline: none;
     border-radius: 10px;
@@ -239,57 +232,3 @@ hr {
 
 
 /* ================== End Screen Size Adjustment styling ==================== */
-
-
-
-/* ========================= Code to be used Later ========================== */
-/* #search:hover::placeholder, .search_magnifier:hover {
-color: #2b2b2b;
-transition: 1s;
-}
-#search:hover:-ms-input-placeholder, .search_magnifier:hover:-ms-input-placeholder {
-color: #2b2b2b;
-transition: 1s;
-}
-#search:hover::-ms-input-placeholder, .search_magnifier:hover::-ms-input-placeholder {
-color: #2b2b2b;
-transition: 1s;
-} */
-
-
-
-
-/* .project-image-wrapper {
-  justify-self: center;
-  padding: 4%;
-  position: relative;
-  width: 200px;
-  height: 250px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px 0 rgba(255, 255, 255, 0.40);;
-  transition: all ease-in-out .4s;
-  margin: 20px;
-}
-
-.span {
-font-size: 2.5rem;
-left: 0;
-right: 0;
-z-index: 20;
-text-align: center;
-pointer-events: none;
-bottom: 0;
-position: absolute;
-color: #2b2b2b;
-}
-
-.project-image1, .project-image2, .project-image3, .project-image4, .project-image5  {
- width: 200px;
- height: 200px;
- top: 50%;
- left: 50%;
-}
-
-.project-image-wrapper:hover {
-box-shadow: 0 8px 12px 0 rgba(255, 255, 255, 0.80);
-} */

@@ -86,13 +86,15 @@ let getAll = item => pokemonList
         })
     })
 
+// --------------------- END Adding the search Bar function --------------------
+
    return {
      add,
      getAll,
      addListItem
  };
 })();
-// --------------------- END Adding the search Bar function --------------------
+
 // ------------------------- add in new characters -----------------------------
 pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze'], image: '<img src = Images/typhlosion.svg />'})
 
