@@ -54,7 +54,6 @@ let pokemonRepository = (function() {
 // --------------------- END Creation of IIFE function. ------------------------
 // ----- Creating a function to display details of the pokemen Characters ------
   function showDetails(pokemon) {
-    // document.querySelector('.pokemon_Button').textContent = pokemon.name;
     console.log(pokemon.name);
   }
 // --- END Creating a function to display details of the pokemen Characters ----
@@ -73,9 +72,9 @@ let pokemonRepository = (function() {
 // --- additon of an event listner for the button of each pokemon Character ----
 // ------------ Referencing function showDetails() to display info -------------
     button.addEventListener('click', function(pokemon_Button) {
-      showDetails(pokemon)
+    showDetails(pokemon)
 // -- END additon of an event listner for the button of each pokemon Character -
-});
+    });
   }
 
 let getAll = item => pokemonList
