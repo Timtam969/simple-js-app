@@ -1,6 +1,5 @@
 /*========================== styles added to body ============================*/
-
-body {
+  body {
   display: block;
   margin: 8px;
   background-color: #2b2b2b;
@@ -8,21 +7,23 @@ body {
 }
 /* ============================ End Body Styling ============================ */
 
-/*=================== overall container for all page items ===================*/
+/* =================== overall container for all page items ================= */
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 /* ========================= End Container Styling ========================== */
 
-/*====================== coding for logo and searchbar =======================*/
+/* ===================== coding for logo and searchbar ====================== */
 .header {
   text-align: center;
 }
 
 .logo {
-  max-width: 100%;
-  margin: 20px;
+  width: 60%;
+  margin:0 20px;
+  text-align: center;
 }
 
 .content-wrapper {
@@ -30,11 +31,12 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
+
                   /* =========== Search Bar Styling ========== */
 .search-wrapper {
-  width: 900px;
-  max-width: 900px;
-  margin-left: 25px;
+  width: 80%;
+  margin: 50px 50px;
   background-color: #a3a3a3ff;
   border-radius: 5px;
   align-self: center;
@@ -109,6 +111,7 @@ body {
   }
 
                   /* ======= End Search Bar Styling ======= */
+
 /* ====================== End Logo/ Searchbar Styling ======================= */
 
 
@@ -121,99 +124,123 @@ hr {
 
 /* ========================== End Divider Styling =========================== */
 
-/* ============================= Table Styling ============================== */
-#character_table {
+/* ========================= Unordered List Styling ========================= */
+.characters-list {
   display: flex;
+  width:inherit;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 0;
 }
 
-#character_table td, #character_table thead {
-  border: 1px solid #2b2b2b;
-  padding: 8px;
+ .characters-list>li {
+   display: flex;
+   justify-content: center;
+   margin:30px 30px;
+   /* position: center; */
+   width: 300px;
+   height: 300px;
+   overflow: hidden;
+   display: -webkit-inline-box;
+   display: -ms-inline-flexbox;
+   display: inline-flex;
+   /* list-style-type: none; */
+   cursor: pointer;
+   z-index: 20000;
 }
-
-#character_table tr:hover {
-  background-color: #2b2b2b;
-  color: #ddd;
-}
-
-#character_table thead {
-  @extend .skills-shared;
-  background-color: #orange;
-  color: #2b2b2b;
-}
-
-#character_table tr {
-  @extend .skills-shared;
-  background-color: #ddd;
-  color: #2b2b2b;
-}
-
-#table_height {
+.pokemon_Button {
   display: flex;
+  width: 250px;
+  height: 290px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(50deg, rgb(245, 215, 27) 50%, rgb(0, 0, 0) 50%);
+  padding: 16px 32px;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+  margin: 0px 0px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  box-shadow: 0 3px 5px rgb(255 255 255 / 100%), 0 1px 2px rgb(255 255 255 / 100%);
+
 }
 
-#table_height td, #table_height thead {
-  border: 1px solid #2b2b2b;
-  padding: 8px;
+.pokemon_Button img {
+    align-self: center;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    pointer-events: none;
+    margin-top: auto;
 }
 
-#table_height tr:hover {
-  background-color: #2b2b2b;
-  color: #ddd;
-}
-
-#table_height thead {
-  @extend .skills-shared;
-  background-color: #orange;
-  color: #2b2b2b;
-}
-
-#table_height tr {
-  @extend .skills-shared;
-  background-color: #ddd;
-  color: #2b2b2b;
+.pokemon_Button span {
+    color: black;
+    font-size: 30px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,.5);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    align-items: center;
+    margin-top: auto;
+    transform: translate(0%, 45%);
+    pointer-events: none;
 }
 /* ========================== End Divider styling =========================== */
 
 /* ==================== Screen Size Adjustment styling ====================== */
 @media all and (max-width: 1100px) {
-	.container {
-    max-width: 100%;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-    position: center;
+  .container, .content-wrapper, .header {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 20px;
+    margin-right: 20px;
 	}
 }
 
-@media all and (max-width: 1100px) and (min-width: 800px) {
-	.container {
-    max-width: 100%;
-		grid-template-columns: 1fr 1fr 1fr;
-    position: center;
+
+@media all and (max-width: 1100px) and (min-width: 940px) {
+	 .container, .content-wrapper, .header  {
+     flex-grow: 1;
+     flex-shrink: 1;
+    margin-left: 20px;
+    margin-right: 20px;
 	}
 }
 
-@media all and (max-width: 800px) and (min-width: 600px) {
-	.container {
-    max-width: 100%;
-		grid-template-columns: 1fr 1fr;
-    position: center;
-    margin:
+
+
+@media all and (max-width: 940px) and (min-width: 600px) {
+	 .container, .content-wrapper, .header {
+     flex-grow: 1;
+     flex-shrink: 1;
+     margin-left: 20px;
+     margin-right: 20px;
 	}
 }
+
 
 @media all and (max-width: 600px) {
-	.container {
-    max-width: 100%;
-		grid-template-columns: 1fr;
-    position: center;
-    margin: auto;
+	 .container, .content-wrapper, .header, .characters-list {
+     flex-grow: 1;
+     flex-shrink: 1;
+     margin-left: 20px;
+     margin-right: 20px;
 	}
 }
 
-}
+
 /* ================== End Screen Size Adjustment styling ==================== */
+
+
 
 /* ========================= Code to be used Later ========================== */
 /* #search:hover::placeholder, .search_magnifier:hover {
@@ -231,29 +258,8 @@ transition: 1s;
 
 
 
-/* .projects-grid {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: auto;
-  justify-content: center;
-} */
 
-/* #pokemonList>li {
-  display: grid;
-    margin: 10px;
-    position: relative;
-    width: 200;
-    height: 250px;
-    overflow: hidden;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    list-style-type: none;
-    cursor: pointer;
-    z-index: 20000;
-}
-
-
-.project-image-wrapper {
+/* .project-image-wrapper {
   justify-self: center;
   padding: 4%;
   position: relative;

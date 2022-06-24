@@ -1,129 +1,104 @@
-
-
-
 //Creation of IIFE function. Using this to ensure the use only as the Local variable.
 let pokemonRepository = (function() {
   let pokemonList = [
-    {name: 'Charizard ', height: 1.7, type:['Monster',' Dragon'], abilities:['Blaze',' Solor-Power']},
-    {name: 'Fearow', height: 1.2, type:['Flying'], abilities:['Keen-eye',' Sniper']},
-    {name: 'Nidoking', height: 1.4, type:['Monster',' Field'], abilities:['Poison-point',' Rivalry',' Sheer-force ']},
-    {name: 'Tentacruel', height: 1.6, type:['Water3'], abilities:['Clear-body',' Rain-dish',' Liquid-ooze']},
-    {name: 'Wailord', height: 14.5, type:['Field',' Water2'], abilities:['Oblivious',' Water-veil',' Pressure']},
+      {name: 'Charizard ',
+       height: 1.7,
+       type:['Monster',' Dragon'],
+       abilities:['Blaze',' Solor-Power'],
+       image: '<img src = Images/charizard.svg />'
+    },
+      {name: 'Fearow',
+      height: 1.2,
+      type:['Flying'],
+      abilities:['Keen-eye',' Sniper'],
+      image: '<img src = Images/fearow.svg />'
+    },
+      {name: 'Nidoking',
+      height: 1.4,
+      type:['Monster',' Field'],
+      abilities:['Poison-point',' Rivalry',' Sheer-force '],
+      image: '<img src = Images/nidoking.svg />'
+    },
+      {name: 'Tentacruel',
+      height: 1.6, type:['Water3'],
+      abilities:['Clear-body',' Rain-dish',' Liquid-ooze'],
+      image: '<img src = Images/tentacruel.svg />'
+    },
+      {name: 'Wailord',
+      height: 14.5,
+      type:['Field',' Water2'],
+      abilities:['Oblivious',' Water-veil',' Pressure'],
+      image: '<img src = Images/Wailord.svg />'
+    },
   ];
 
-//let add = item => pokemonList.push(item);
-  function  add(item) {
-        if (
-            typeof item === "object" &&
-            "name" in item &&
-            "height" in item &&
-            "type" in item &&
-            "abilities" in item
-        ) {
-          Object.keys(item).forEach(function(property) {
-            if (property === 'name', 'height', 'type', 'abilities') {
-            console.log('Entry is correct')
-          } else {
-          window.alert("Invalid Pokemon entry")
-        }
-          });
-            pokemonList.push(item);
-        } else {
-            window.alert("Invalid Pokemon entry")
-        }
-
+   function add(item) {
+    if (typeof item === "object" &&
+        "name" in item &&
+        "height" in item &&
+        "type" in item &&
+        "abilities" in item
+    ) {
+      Object.keys(item).forEach(function(property) {
+        if (property === 'name', 'height', 'type', 'abilities', 'image') {
+        console.log('Entry is correct')
+      } else {
+      window.alert("Invalid Pokemon entry")
     }
-     //pokemonList.push(item);
-  let getAll = item => pokemonList
+      });
+        pokemonList.push(item);
+    } else {
+        window.alert("Invalid Pokemon entry")
+    }
+  }
+// --------------------- END Creation of IIFE function. ------------------------
+
+// ----------------- Adding the pokemon Characters to the list------------------
+  function addListItem(pokemon) {
+    let newPokemons = document.querySelector('.characters-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    const span = document.createElement('span');
+    button.innerHTML = pokemon.image;
+    span.innerText = pokemon.name;
+    button.classList.add('pokemon_Button');
+    button.appendChild(span);
+    listItem.appendChild(button);
+    newPokemons.appendChild(listItem);
+  }
+
+let getAll = item => pokemonList
+
+// -------------- END Adding the pokemon Characters to the list ----------------
+// ---------------------- Adding the search Bar function -----------------------
+ const search = document.getElementById('search');
+
+ search.addEventListener('keyup', (e) => {
+        const searchString = e.target.value;
+        const filteredPokemons = document.querySelectorAll("li");
+        filteredPokemons.forEach(e => {
+            if (e.innerText.toLowerCase().includes(searchString.toLowerCase()))  {
+                e.style.display = "block";
+            }
+            else {
+                e.style.display = "none";
+            }
+        })
+    })
+
    return {
-     add: add,
-     getAll: getAll
+     add,
+     getAll,
+     addListItem
  };
 })();
+// --------------------- END Adding the search Bar function --------------------
+// ------------------------- add in new characters -----------------------------
+pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze'], image: '<img src = Images/typhlosion.svg />'})
 
-// add in new characters
-pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze']})
-//pokemonRepository.add('')
+console.log(pokemonRepository.getAll());
 
-let table_character = (function() {
-
-  var html ="<table border= '4'>";
-
-  html+='<thead>';
-  html+='<tr>';
-  html+='<td>' + 'name' +'</td>';
-  html+='<td>' + 'Height' +'</td>';
-  html+='<td>' + 'Type' +'</td>';
-  html+='<td>' + 'Abilities' +'</td>';
-  html+='</tr>';
-  html+='</thead>';
-
-// Looping throught the Array and populating the #character_table with information using a foreach loop
-// creation in the individual columns
-
-    pokemonRepository.getAll().forEach((pokemonList) => {
-
-      html+='<tr>';
-      html+='<td>' + pokemonList.name +'</td>';
-      html+='<td>' + pokemonList.height + 'm Tall' +'</td>';
-      html+='<td>' + pokemonList.type +'</td>';
-      html+='<td>' + pokemonList.abilities +'</td>';
-      html+='</tr>';
-    });
-
-    document.getElementById('character_table').innerHTML = html;
-  })();
-
-
-
-//Creation of IIFE function. Using this to ensure the use only as the Local variable.
-let table_height = (function() {
-
-  // border setup for the tables
-  var html2 ="<table border= '4'>";
-
-    html2+='<thead>';
-    html2+='<tr>';
-    html2+='<td>' + 'Name' +'</td>';
-    html2+='<td>' + 'Height' +'</td>';
-    html2+='<td>' + 'Height Catagory' +'</td>';
-    html2+='</tr>';
-    html2+='</thead>';
-
-    // Looping throught the Array and populating the #character_table with information using a foreach loop
-    // creation in the individual columns
-    pokemonRepository.getAll().forEach((height) => {
-
-      // uses if else statement to locate the height attributes and then populate new table column
-      if (height.height < 1.5) {
-      html2+='<tr>';
-      html2+='<td>' + height.name +'</td>';
-      html2+='<td>' + height.height + 'm Tall' +'</td>';
-      // Adding a new table column to accept the if else conditions
-      html2+='<td>' + "You're tiny!" +'</td>';
-      html2+='</tr>';
-    }
-    else if(height.height < 5) {
-      html2+='<tr>';
-      html2+='<td>' + height.name +'</td>';
-      html2+='<td>' + height.height + 'm Tall' +'</td>';
-      html2+='<td>' + "Standard but Strong!" +'</td>';
-      html2+='</tr>';
-    }
-    else  {
-      html2+='<tr>';
-      html2+='<td>' + height.name + '</td>';
-      html2+='<td>' + height.height + 'm Tall' +'</td>';
-      html2+='<td>' + "You're Huge!" + '</td>';
-      html2+='</tr>';
-    }
-    // creation of the table for the second table table_height
-      document.getElementById('table_height').innerHTML = html2;
-  });
-})();
-
-
-// "name" in item &&
-// "height" in item &&
-// "type" in item &&
-// "abilities" in item
+pokemonRepository.getAll().forEach(function (item) {
+  pokemonRepository.addListItem(item);
+});
+// ------------------------ END add in new characters --------------------------
