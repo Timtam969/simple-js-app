@@ -17,7 +17,7 @@ let pokemonRepository = (function() {
        window.alert("Invalid Pokemon entry")
    }
   }
-  
+
 
   let getAll = item => pokemonList
 
