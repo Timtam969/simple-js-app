@@ -1,83 +1,97 @@
 //Creation of IIFE function. Using this to ensure the use only as the Local variable.
 let pokemonRepository = (function() {
-  let pokemonList = [
-      {name: 'Charizard ',
-       height: 1.7,
-       type:['Monster',' Dragon'],
-       abilities:['Blaze',' Solor-Power'],
-       image: '<img src = Images/charizard.svg />'
-    },
-      {name: 'Fearow',
-      height: 1.2,
-      type:['Flying'],
-      abilities:['Keen-eye',' Sniper'],
-      image: '<img src = Images/fearow.svg />'
-    },
-      {name: 'Nidoking',
-      height: 1.4,
-      type:['Monster',' Field'],
-      abilities:['Poison-point',' Rivalry',' Sheer-force '],
-      image: '<img src = Images/nidoking.svg />'
-    },
-      {name: 'Tentacruel',
-      height: 1.6, type:['Water3'],
-      abilities:['Clear-body',' Rain-dish',' Liquid-ooze'],
-      image: '<img src = Images/tentacruel.svg />'
-    },
-      {name: 'Wailord',
-      height: 14.5,
-      type:['Field',' Water2'],
-      abilities:['Oblivious',' Water-veil',' Pressure'],
-      image: '<img src = Images/Wailord.svg />'
-    },
-  ];
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-   function add(item) {
-    if (typeof item === "object" &&
-        "name" in item &&
-        "height" in item &&
-        "type" in item &&
-        "abilities" in item
-    ) {
-      Object.keys(item).forEach(function(property) {
-        if (property === 'name', 'height', 'type', 'abilities', 'image') {
-        console.log('Entry is correct')
-      } else {
-      window.alert("Invalid Pokemon entry")
-    }
-      });
-        pokemonList.push(item);
-    } else {
-        window.alert("Invalid Pokemon entry")
-    }
+  function add(item) {
+   if (typeof item === "object") {
+     Object.keys(item).forEach(function(property) {
+       if (property === 'name', 'detailsUlr') {
+       console.log('Entry is correct')
+     } else {
+     window.alert("Invalid Pokemon entry")
+   }
+     });
+       pokemonList.push(item);
+   } else {
+       window.alert("Invalid Pokemon entry")
+   }
   }
+  
+
+  let getAll = item => pokemonList
+
+  function loadList() {
+      return fetch(apiUrl).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+        });
+      }).catch(function (e) {
+        console.error(e);
+      })
+    }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.other.dream_world.front_default;
+      item.height = details.height;
+      item.types = details.types[0].type.name;
+      item.weight = details.weight;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+
+
+
 // --------------------- END Creation of IIFE function. ------------------------
 // ----- Creating a function to display details of the pokemen Characters ------
-  function showDetails(pokemon) {
-    console.log(pokemon.name);
-  }
+function showDetails(pokemon) {
+pokemonRepository.loadDetails(pokemon).then(function () {
+  console.log(pokemon);
+});
+}
+
+
 // --- END Creating a function to display details of the pokemen Characters ----
 // ----------------- Adding the pokemon Characters to the list------------------
   function addListItem(pokemon) {
     let newPokemons = document.querySelector('.characters-list');
     let listItem = document.createElement('li');
     let button = document.createElement('button');
-    const span = document.createElement('span');
-    button.innerHTML = pokemon.image;
+    let span = document.createElement('span');
+    let pokemonImg = document.createElement('img');
+    pokemonImg.src = pokemon.imageUrl;
+    //button.innerHTML = pokemon.imageUrl;
     span.innerText = pokemon.name;
+
     button.classList.add('pokemon_Button');
+    button.appendChild(pokemonImg);
     button.appendChild(span);
     listItem.appendChild(button);
     newPokemons.appendChild(listItem);
 // --- additon of an event listner for the button of each pokemon Character ----
 // ------------ Referencing function showDetails() to display info -------------
     button.addEventListener('click', function(pokemon_Button) {
-    showDetails(pokemon)
+      showDetails(pokemon)
 // -- END additon of an event listner for the button of each pokemon Character -
     });
   }
 
-let getAll = item => pokemonList
+
+
+
 
 // -------------- END Adding the pokemon Characters to the list ----------------
 
@@ -100,18 +114,28 @@ let getAll = item => pokemonList
 // --------------------- END Adding the search Bar function --------------------
 
    return {
-     add,
-     getAll,
-     addListItem
+     add: add,
+     getAll: getAll,
+     addListItem: addListItem,
+     loadList: loadList,
+     loadDetails: loadDetails,
+     showDetails: showDetails
  };
 })();
 
 // ------------------------- add in new characters -----------------------------
-pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze'], image: '<img src = Images/typhlosion.svg />'})
+//pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze'], image: '<img src = Images/typhlosion.svg />'})
 
-console.log(pokemonRepository.getAll());
 
-pokemonRepository.getAll().forEach(function (item) {
-  pokemonRepository.addListItem(item);
+//
+// pokemonRepository.getAll().forEach(function (item) {
+//   pokemonRepository.addListItem(item);
+// });
+pokemonRepository.loadList().then(function() {
+  // Now the data is loaded!
+  pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+     //console.log(pokemonRepository.getAll());
+  });
 });
 // ------------------------ END add in new characters --------------------------
