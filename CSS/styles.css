@@ -166,6 +166,7 @@ hr {
 
 .pokemon_Button img {
     align-self: center;
+    width: 200px;
     left: 0;
     right: 0;
     z-index: 20;

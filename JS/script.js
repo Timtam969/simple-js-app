@@ -3,6 +3,10 @@ let pokemonRepository = (function() {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
+
+
+
+
   function add(item) {
    if (typeof item === "object") {
      Object.keys(item).forEach(function(property) {
@@ -38,15 +42,18 @@ let pokemonRepository = (function() {
     }
 
   function loadDetails(item) {
-    let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
+    let pokemon = item.detailsUrl;
+    return fetch(pokemon).then(function (response) {
       return response.json();
-    }).then(function (details) {
+    }).then(function (pokemon) {
+
       // Now we add the details to the item
-      item.imageUrl = details.sprites.other.dream_world.front_default;
-      item.height = details.height;
-      item.types = details.types;
-      item.weight = details.weight;
+      item.imageUrl = pokemon.sprites.other.dream_world.front_default,
+      item.height = pokemon.height,
+      item.types = pokemon.types,
+      item.weight = pokemon.weight,
+      item.id = pokemon.id
+      console.log(pokemon)
     }).catch(function (e) {
       console.error(e);
     });
@@ -55,10 +62,11 @@ let pokemonRepository = (function() {
 
 
 
+
 // --------------------- END Creation of IIFE function. ------------------------
 // ----- Creating a function to display details of the pokemen Characters ------
 function showDetails(pokemon) {
-pokemonRepository.loadDetails(pokemon).then(function (pokemon) {
+pokemonRepository.loadDetails(pokemon).then(function (item) {
   console.log(pokemon);
 });
 }
@@ -72,10 +80,11 @@ pokemonRepository.loadDetails(pokemon).then(function (pokemon) {
     let button = document.createElement('button');
     let span = document.createElement('span');
     let pokemonImg = document.createElement('img');
-    pokemonImg.src = pokemon.imageUrl;
+    pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
+
+
     //button.innerHTML = pokemon.imageUrl;
     span.innerText = pokemon.name;
-
     button.classList.add('pokemon_Button');
     button.appendChild(pokemonImg);
     button.appendChild(span);
@@ -114,12 +123,12 @@ pokemonRepository.loadDetails(pokemon).then(function (pokemon) {
 // --------------------- END Adding the search Bar function --------------------
 
    return {
-     add: add,
-     getAll: getAll,
-     addListItem: addListItem,
-     loadList: loadList,
-     loadDetails: loadDetails,
-     showDetails: showDetails
+    add,
+    getAll,
+    addListItem,
+    loadList,
+    loadDetails,
+    showDetails
  };
 })();
 
