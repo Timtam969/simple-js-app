@@ -28,7 +28,7 @@ let pokemonRepository = (function() {
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
-            detailsUrl: item.url
+            detailsUrl: item.url,
           };
           add(pokemon);
         });
@@ -45,7 +45,7 @@ let pokemonRepository = (function() {
       // Now we add the details to the item
       item.imageUrl = details.sprites.other.dream_world.front_default;
       item.height = details.height;
-      item.types = details.types[0].type.name;
+      item.types = details.types;
       item.weight = details.weight;
     }).catch(function (e) {
       console.error(e);
@@ -58,7 +58,7 @@ let pokemonRepository = (function() {
 // --------------------- END Creation of IIFE function. ------------------------
 // ----- Creating a function to display details of the pokemen Characters ------
 function showDetails(pokemon) {
-pokemonRepository.loadDetails(pokemon).then(function () {
+pokemonRepository.loadDetails(pokemon).then(function (pokemon) {
   console.log(pokemon);
 });
 }
