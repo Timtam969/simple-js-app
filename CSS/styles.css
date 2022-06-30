@@ -233,3 +233,32 @@ hr {
 
 
 /* ================== End Screen Size Adjustment styling ==================== */
+
+/* ========================= Styling Loader object ========================== */
+  #modal {
+     display: none;
+     position: center;
+     margin: auto;
+     margin-top: 50px;
+     width: 90px;
+     height: 90px;
+     padding:0px 0px 0px;
+     /* border: 3px solid #ababab; */
+     /* box-shadow:1px 1px 10px #ababab; */
+      border-radius:50px;
+     /* background-color: none; */
+     z-index: 1002;
+     text-align:center;
+     overflow: auto;
+  }
+
+  #loader {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    width:90px;
+    height: 90px;
+    background-color: none;
+    border: none;
+  }
+
+  /* =======================End Styling Loader object ======================= */

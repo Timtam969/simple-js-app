@@ -5,7 +5,7 @@ let pokemonRepository = (function() {
 
 
 
-
+// ---------------------------- Adding Pokemon ------------------------------ //
 
   function add(item) {
    if (typeof item === "object") {
@@ -22,10 +22,13 @@ let pokemonRepository = (function() {
    }
   }
 
+// -------------------------- End Adding Pokemon ---------------------------- //
 
   let getAll = item => pokemonList
 
+// ------------------ loading and showing Pokemon Date ---------------------- //
   function loadList() {
+    showLoadingMessage();
       return fetch(apiUrl).then(function (response) {
         return response.json();
       }).then(function (json) {
@@ -35,13 +38,17 @@ let pokemonRepository = (function() {
             detailsUrl: item.url,
           };
           add(pokemon);
+
         });
+        hideLoadingMessage()
       }).catch(function (e) {
         console.error(e);
       })
+
     }
 
   function loadDetails(item) {
+    showLoadingMessage();
     let pokemon = item.detailsUrl;
     return fetch(pokemon).then(function (response) {
       return response.json();
@@ -54,25 +61,35 @@ let pokemonRepository = (function() {
       item.weight = pokemon.weight,
       item.id = pokemon.id
       console.log(pokemon)
+      hideLoadingMessage();
     }).catch(function (e) {
       console.error(e);
     });
   }
+// ----------------- End loading and showing Pokemon Date ------------------- //
+//-------------------------- Creating Loading Image ------------------------- //
+    function showLoadingMessage() {
+        document.getElementById('modal').style.display = 'block';
 
+    }
 
+  function hideLoadingMessage() {
+      document.getElementById('modal').style.display = 'none';
 
+  }
 
-
-// --------------------- END Creation of IIFE function. ------------------------
-// ----- Creating a function to display details of the pokemen Characters ------
+//---------------------- End Creating Loading Image ------------------------- //
+// --------------------- END Creation of IIFE function. --------------------- //
+// ---- Creating a function to display details of the pokemen Characters ---- //
 function showDetails(pokemon) {
 pokemonRepository.loadDetails(pokemon).then(function (item) {
+
   console.log(pokemon);
 });
 }
 
 
-// --- END Creating a function to display details of the pokemen Characters ----
+// -- END Creating a function to display details of the pokemen Characters -- //
 // ----------------- Adding the pokemon Characters to the list------------------
   function addListItem(pokemon) {
     let newPokemons = document.querySelector('.characters-list');
@@ -128,23 +145,15 @@ pokemonRepository.loadDetails(pokemon).then(function (item) {
     addListItem,
     loadList,
     loadDetails,
-    showDetails
+    showDetails,
  };
 })();
 
 // ------------------------- add in new characters -----------------------------
-//pokemonRepository.add({name: 'Typhlosion', height: 1.7, type:['Field'], abilities:['Flash-fire', ' Blaze'], image: '<img src = Images/typhlosion.svg />'})
 
-
-//
-// pokemonRepository.getAll().forEach(function (item) {
-//   pokemonRepository.addListItem(item);
-// });
 pokemonRepository.loadList().then(function() {
-  // Now the data is loaded!
   pokemonRepository.getAll().forEach(function(pokemon){
     pokemonRepository.addListItem(pokemon);
-     //console.log(pokemonRepository.getAll());
   });
 });
 // ------------------------ END add in new characters --------------------------
