@@ -80,7 +80,7 @@ pokemonRepository.loadDetails(pokemon).then(function (item) {
     let button = document.createElement('button');
     let span = document.createElement('span');
     let pokemonImg = document.createElement('img');
-    pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`;
+    pokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg`;
 
 
     //button.innerHTML = pokemon.imageUrl;
@@ -93,7 +93,7 @@ pokemonRepository.loadDetails(pokemon).then(function (item) {
 // --- additon of an event listner for the button of each pokemon Character ----
 // ------------ Referencing function showDetails() to display info -------------
     button.addEventListener('click', function(pokemon_Button) {
-      showDetails(pokemon)
+      showDetails(pokemon);
 // -- END additon of an event listner for the button of each pokemon Character -
     });
   }
