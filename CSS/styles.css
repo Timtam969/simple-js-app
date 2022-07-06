@@ -21,7 +21,7 @@
 }
 
 .logo {
-  width: 60%;
+  width: 50%;
   margin:0 20px;
   text-align: center;
 }
@@ -35,7 +35,7 @@
 
                   /* =========== Search Bar Styling ========== */
 .search-wrapper {
-  width: 80%;
+  width: 300px;
   margin: 50px 50px;
   background-color: #a3a3a3ff;
   border-radius: 5px;
@@ -43,6 +43,7 @@
 }
 
 .search-bar {
+  width: 300px;
   background-color: transparent;
   display: flex;
   position: center;
@@ -60,8 +61,8 @@
   width: 100%;
   cursor: pointer;
   outline: 0;
-  font-size: 1rem;
   margin: 10px;
+  background-color: none;
 }
 
 #search {
@@ -74,33 +75,38 @@
 #search::placeholder {
   background-color: none;
   color: black;
+  border: none;
+  text-align: center;
+  font-family: cursive;
+  font-size: 1.3rem;
 }
+
  #search, .search-wrapper:hover, #search, .search-wrapper:focus {
-    background-color: #a3a3a3ff;
     padding: 5px;
     outline: none;
     border-radius: 10px;
     transition: 1s;
+    text-align: center;
+    font-family: cursive;
+    font-size: 1.3rem;
   }
 
  .search-wrapper:active, {
-      background-color: #a3a3a3ff;
-      color: #fff;
       border: none;
       outline: 0;
       padding: 5px;
       border-radius: 10px;
       transition: 1s;
+
     }
 
   input#search:active, {
-    background-color: black;
-    color: #fff;
     border: none;
     outline: 0;
     padding: 5px;
     border-radius: 10px;
     transition: 1s;
+
   }
 
                   /* ======= End Search Bar Styling ======= */
@@ -134,29 +140,29 @@ hr {
    justify-content: center;
    margin:30px 30px;
    /* position: center; */
-   width: 300px;
-   height: 300px;
+   width: 350px;
+   height: 400px;
    overflow: hidden;
    display: -webkit-inline-box;
    display: -ms-inline-flexbox;
    display: inline-flex;
    /* list-style-type: none; */
    cursor: pointer;
-   z-index: 20000;
+   z-index: 10;
 }
 .pokemon_Button {
   display: flex;
-  width: 250px;
-  height: 290px;
+  width: 300px;
+  height: 340px;
   border: none;
   border-radius: 30px;
   background: linear-gradient(50deg, rgb(245, 215, 27) 50%, rgb(0, 0, 0) 50%);
-  padding: 16px 32px;
+  /* padding: 16px 32px; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  margin: 0px 0px;
+  margin: 50px 20px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
@@ -166,7 +172,8 @@ hr {
 
 .pokemon_Button img {
     align-self: center;
-    width: 200px;
+    width: 60%;
+    height: 60%;
     left: 0;
     right: 0;
     z-index: 20;
@@ -180,11 +187,24 @@ hr {
     width: 200px;
     border-radius: 10px;
     background-color: rgba(255,255,255,.5);
-    left: 0;
-    right: 0;
+    margin-bottom: 20px;
     z-index: 20;
     align-items: center;
     margin-top: auto;
+    transform: translate(0%, 45%);
+    pointer-events: none;
+}
+
+.pokemon_Button p {
+    color: #000;
+    font-size: 20px;
+    width: 70px;
+    border-radius: 0 10px 0 10px;
+    background-color: rgba(255,255,255,.9);
+    margin-left: 200px;
+    z-index: 20;
+    justify-content: flex-end;
+    margin-top: 0px;
     transform: translate(0%, 45%);
     pointer-events: none;
 }
@@ -247,7 +267,7 @@ hr {
      /* box-shadow:1px 1px 10px #ababab; */
       border-radius:50px;
      /* background-color: none; */
-     z-index: 1002;
+     z-index: 20;
      text-align:center;
      overflow: auto;
   }
@@ -262,3 +282,191 @@ hr {
   }
 
   /* =======================End Styling Loader object ======================= */
+
+  .modal-confirm {
+    cursor: pointer;
+  }
+
+  .modal-cancel {
+    cursor: pointer;
+  }
+
+  #Character-modal {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+
+    cursor: pointer; /* add cursor here or in iv-visible */
+
+    /* to show it above other content */
+    z-index: 40;
+
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto;
+  }
+
+  .modal {
+    /* this is used to center the modal */
+    justify-content: center;
+    margin: auto;
+    border-radius: 100px;
+    box-shadow: 0 3px 5px rgb(255 255 255 / 100%), 0 1px 2px rgb(255 255 255 / 100%);
+    box-sizing: border-box;
+    background: linear-gradient(50deg, rgb(245, 215, 27) 50%, rgb(0, 0, 0) 50%);
+    padding: 15px;
+    width: 600px;
+    height: 800px;
+
+    cursor: default; /* remove cursor if you include the modal in the hideModal function */
+  }
+
+  .name {
+    font-size: 100px;
+    text-align: center;
+    align-content: center;
+    margin-top: 10px;
+    color: white;
+    font-family: fantasy;
+  }
+
+  .modal img {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    align-content: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+
+  .attributes {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 550px;
+    margin: auto;
+    margin-top: 80px;
+    box-sizing: border-box;
+    padding: 15px;
+    cursor: default; /* remove cursor if you include the modal in the hideModal function */
+
+  }
+
+  .Types {
+    border-radius: 0 30px 0 30px;
+    background-color: rgba(255,255,255,1);
+    display: flex;
+    flex-direction: column;
+    width:40%;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+    font-family: fantasy;
+     margin-top: 0;
+     color: black;
+   }
+
+    .pokemonType1 {
+      border-radius: 0;
+      background-color: none;
+      text-align: center;
+      font-size: 20px;
+       margin-top: 0;
+       color: black;
+     }
+
+
+ .height {
+   border-radius: 30px 0px 30px 0px;
+   background-color: rgba(255,255,255,1);
+   display: flex;
+   flex-direction: column;
+   align-content: flex-start;
+   width:40%;
+   padding-top: 20px;
+   font-size: 30px;
+   font-family: fantasy;
+    margin-top: 0;
+    color: black;
+  }
+
+  .pokeHeight {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+    color: black;
+   }
+
+ .weight {
+   border-radius: 0px 30px 0px 30px;
+   background-color: rgba(255,255,255,1);
+   display: flex;
+   flex-direction: column;
+   align-content: flex-start;
+   width:40%;
+   padding-top: 20px;
+   font-size: 30px;
+   font-family: fantasy;
+   margin-top: 70px;
+   color: black;
+  }
+
+  .pokeWeight {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+    color: black;
+   }
+
+ .stats {
+   border-radius: 30px 0px 30px 0px;
+   background-color: rgba(255,255,255,1);
+   display: flex;
+   flex-direction: column;
+   align-content: flex-start;
+   width:40%;
+   padding-top: 20px;
+   font-size: 30px;
+   font-family: fantasy;
+   margin-top: 70px;
+   color: black;
+  }
+
+  .PokemonHit {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+    color: black;
+  }
+
+
+
+  #Character-modal {
+    display: none;
+  }
+
+  #Character-modal.is-visible {
+    /* CSS for modal container - add your own desired CSS styles here */
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer; /* add cursor here or in iv-visible */
+
+    /* to show it above other content */
+    z-index: 900;
+
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto;
+
+    /* this is used to center the modal */
+    display: grid;
+    text-align: center;
+    /* cursor: pointer; */ /* add cursor here or in container */
+  }
