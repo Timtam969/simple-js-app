@@ -2,6 +2,23 @@
 let pokemonRepository = (function() {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=100';
+  let typeColor = {
+    bug: "#26de81",
+    dragon: "#ffeaa7",
+    electric: "#fed330",
+    fairy: "#FF0069",
+    fighting: "#30336b",
+    fire: "#f0932b",
+    grass: "#00b894",
+    ground: "#EFB594",
+    ghost: "#a55eea",
+    ice: "#74b9ff",
+    normal: "#95afc0",
+    poison: "#6c5ce7",
+    psychic: "#a29bfe",
+    rock: "#2d3436",
+    water: "#0190FF"
+  };
 
 
 
@@ -142,6 +159,8 @@ let modalContainer = document.querySelector('#Character-modal');
     const poke_types = pokemon.types.map(type => type.type.name).join(', ');
     const image = pokemon.sprites.other.dream_world.front_default;
     const hitPoints = pokemon.stats[0].base_stat;
+    const themeColor = typeColor[pokemon.types[0].type.name];
+    console.log(themeColor);
 // ----------- End creating the show function for the Modal ----------- //
 
 //--------------- Enabling Title and content for Modal ---------------- //
@@ -156,10 +175,6 @@ let modalContainer = document.querySelector('#Character-modal');
 
     let pokeImage = document.createElement('img');
     pokeImage.src = image;
-
-
-
-
 
     let attributes = document.createElement('div')
     attributes.classList.add('attributes')
@@ -177,8 +192,8 @@ let modalContainer = document.querySelector('#Character-modal');
     types.innerText = 'Types:';
 
     let pokemonType1 = document.createElement('div');
-      pokemonType1.classList.add('pokemonType1');
-        pokemonType1.innerText = poke_types;
+    pokemonType1.classList.add('pokemonType1');
+    pokemonType1.innerText = poke_types;
 
     let weight = document.createElement('div');
     weight.classList.add('weight');
@@ -196,10 +211,6 @@ let modalContainer = document.querySelector('#Character-modal');
     pokemonHit.classList.add('PokemonHit');
     pokemonHit.innerText = hitPoints;
 
-
-
-
-
     name.append(pokeName);
     modal.append(name);
     modal.append(pokeImage);
@@ -214,10 +225,25 @@ let modalContainer = document.querySelector('#Character-modal');
     modal.append(attributes);
     modalContainer.appendChild(modal);
 
-
-
     modalContainer.classList.add('is-visible');
+    styleCard(themeColor);
   }
+
+  function styleCard(color) {
+    var element = document.getElementsByClassName("modal");
+    let attColorTypes = document.getElementsByClassName("Types");
+    let attColorHeight = document.getElementsByClassName("height");
+    let attColorHp = document.getElementsByClassName("stats");
+    let attColorWeight = document.getElementsByClassName("weight");
+    // let pokeButton = document.getElementsByClassName("pokemon_Button");
+    // console.log(pokeButton);
+   element[0].style.background = `radial-gradient(circle at 50% 30%, ${color} 36%, #fff 36%)` ;
+   attColorTypes[0].style.background = `${color}` ;
+   attColorHeight[0].style.background = `${color}` ;
+   attColorHp[0].style.background = `${color}` ;
+   attColorWeight[0].style.background = `${color}` ;
+   // pokeButton[0].style.background = `${color}` ;
+  };
   //------------- End Enabling Title and content for Modal -------------- //
 
   let dialogPromiseReject; // This can be set later, by showDialog
