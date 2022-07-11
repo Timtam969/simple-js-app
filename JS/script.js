@@ -121,8 +121,8 @@ function addListItem(p) {
       let span = document.createElement("span");
       let indexNum = document.createElement("p");
       let pokemonImg = document.createElement("img");
-      pokemonImg.src = pokemon.sprites.other.dream_world.front_default;
-      span.innerText = pokemon.name;
+      pokemonImg.src = pokemon.sprites.other["official-artwork"].front_default;
+      span.innerText = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
       indexNum.innerText = ('# '+ pokemon.id);
       button.classList.add("pokemon_Button");
       button.appendChild(indexNum);
@@ -157,7 +157,8 @@ let modalContainer = document.querySelector('#Character-modal');
     modalContainer.innerHTML = '';
     const name1 = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
     const poke_types = pokemon.types.map(type => type.type.name).join(', ');
-    const image = pokemon.sprites.other.dream_world.front_default;
+    const image = pokemon.sprites.other["official-artwork"].front_default;
+    //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png
     const hitPoints = pokemon.stats[0].base_stat;
     const themeColor = typeColor[pokemon.types[0].type.name];
     console.log(themeColor);

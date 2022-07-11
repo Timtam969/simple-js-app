@@ -157,13 +157,13 @@ hr {
   height: 340px;
   border: none;
   border-radius: 30px;
-  background: #fff;
+  background: radial-gradient(circle at 50% 45%, #39a0ffff 45%, #fff 45%);
   /* padding: 16px 32px; */
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   text-decoration: none;
-  margin: 50px 20px;
+  /* margin: 50px 20px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
@@ -173,40 +173,38 @@ hr {
 
 .pokemon_Button img {
     align-self: center;
-    width: 60%;
-    height: 60%;
+    width: 50%;
+    height: 50%;
     left: 0;
     right: 0;
     z-index: 20;
     pointer-events: none;
-    margin-top: auto;
+    margin-top: 40px;
+
 }
 
 .pokemon_Button span {
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
+    font-family: fantasy;
     width: 200px;
-    border-radius: 10px;
+    border-radius: 0 10px 0 10px;
     background-color: #39a0ffff;
-    margin-bottom: 20px;
-    z-index: 20;
-    align-items: center;
+    margin-bottom: 10px;
     margin-top: auto;
-    transform: translate(0%, 45%);
     pointer-events: none;
 }
 
 .pokemon_Button p {
     color: #fff;
-    font-size: 20px;
+    font-size: 15px;
+    font-family: fantasy;
     width: 70px;
     border-radius: 0 10px 0 10px;
     background-color: #39a0ffff;
     margin-left: 200px;
-    z-index: 20;
     justify-content: flex-end;
-    margin-top: 0px;
-    transform: translate(0%, 45%);
+    margin-top: 5px;
     pointer-events: none;
 }
 /* ========================== End Divider styling =========================== */
