@@ -1,0 +1,178 @@
+
+
+
+
+.modal img {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  align-content: center;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.attributes {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 550px;
+  margin: auto;
+  margin-top: 0px;
+  box-sizing: border-box;
+  padding: 15px;
+  cursor: default; /* remove cursor if you include the modal in the hideModal function */
+
+}
+
+.Types {
+  border-radius: 0 30px 0 30px;
+  display: flex;
+  flex-direction: column;
+  width:40%;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 30px;
+  font-family: fantasy;
+   margin-top: 0;
+   color: black;
+ }
+
+  .pokemonType1 {
+    border-radius: 0;
+    background-color: none;
+    text-align: center;
+    font-size: 20px;
+     margin-top: 0;
+     color: black;
+   }
+
+
+.height {
+ border-radius: 30px 0px 30px 0px;
+ background-color: rgba(255,255,255,1);
+ display: flex;
+ flex-direction: column;
+ align-content: flex-start;
+ width:40%;
+ padding-top: 20px;
+ font-size: 30px;
+ font-family: fantasy;
+  margin-top: 0;
+  color: black;
+}
+
+.pokeHeight {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0;
+  color: black;
+ }
+
+.weight {
+ border-radius: 0px 30px 0px 30px;
+ display: flex;
+ flex-direction: column;
+ align-content: flex-start;
+ width:40%;
+ padding-top: 20px;
+ font-size: 30px;
+ font-family: fantasy;
+ margin-top: 70px;
+ color: black;
+}
+
+.pokeWeight {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0;
+  color: black;
+ }
+
+.stats {
+ border-radius: 30px 0px 30px 0px;
+ display: flex;
+ flex-direction: column;
+ align-content: flex-start;
+ width:40%;
+ padding-top: 20px;
+ font-size: 30px;
+ font-family: fantasy;
+ margin-top: 70px;
+ color: black;
+}
+
+.PokemonHit {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0;
+  color: black;
+}
+
+
+
+.modal {
+  display: none;
+}
+
+.modal {
+  /* CSS for modal container - add your own desired CSS styles here */
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); */
+  cursor: pointer; /* add cursor here or in iv-visible */
+
+  /* to show it above other content */
+  /* z-index: 10; */
+
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto;
+
+  /* this is used to center the modal */
+  display: grid;
+  text-align: center;
+  /* cursor: pointer; */ /* add cursor here or in container */
+}
+
+ul {
+list-style-type: none;
+}
+/* a, a:hover {
+color: #000;
+} */
+.container-fluid {
+padding: 0;
+}
+/* .button-class {
+padding: 10px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+/* background-color: #17285E; */
+color: white;
+} */
+.button-class:hover {
+background-color: #2C6CB5;
+color:white;
+}
+/* .pokemon-modal {
+width: 200px;
+height: 200px;
+padding: 5px;
+/* background-image: linear-gradient(#73C0C6, #C2EDFA); */
+border: #000 solid 2px;
+border-radius: 5px;
+margin-bottom: 5px;
+} */
+
+/* .modal-body {
+text-align: center;
+} */
