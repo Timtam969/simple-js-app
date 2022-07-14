@@ -144,8 +144,8 @@ hr {
   justify-content: center;
   margin: 30px 30px;
   /* position: center; */
-  width: 350px;
-  height: 400px;
+  width: 18rem;
+  height: 22rem;
   overflow: hidden;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -156,13 +156,11 @@ hr {
 }
 .button-class {
   display: flex;
-  width: 300px;
-  height: 340px;
+  width: 18rem;
+  height: 22rem;
   border: none;
-  border-radius: 30px;
-  background: radial-gradient(circle at 50% 45%, #39a0ffff 45%, #fff 45%);
-  /* padding: 16px 32px; */
-  /* justify-content: center; */
+  border-radius: 2.5rem;
+  background: radial-gradient(circle at 50% 45%, #39a0ffff 10%, #fff 45%);
   align-items: center;
   flex-direction: column;
   text-decoration: none;
@@ -170,91 +168,97 @@ hr {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  box-shadow: 0 3px 5px rgba(141, 141, 141, 0.9),
-    0 1px 2px rgba(141, 141, 141, 0.9);
+  box-shadow: 0 3px 5px rgb(255 255 255 / 100%),
+    0 1px 2px rgb(255 255 255 / 100%);
 }
 
 .button-class img {
   align-self: center;
-  /* width: 50%; */
-  height: 60%;
+  justify-content: center;
+  height: 10rem;
   left: 0;
   right: 0;
   z-index: 20;
+  margin: auto;
   pointer-events: none;
 }
 
 .button-class span {
   color: #fff;
-  font-size: 25px;
-  font-family: fantasy;
-  width: 200px;
+  font-size: 1rem;
+  font-family: trattatello;
+  width: 6rem;
   border-radius: 0 10px 0 10px;
   background-color: #39a0ffff;
-  margin-bottom: 10px;
-  margin-top: auto;
+  margin: auto;
   pointer-events: none;
 }
 
 .button-class p {
+  align-self: flex-end;
   color: #fff;
-  font-size: 15px;
-  font-family: fantasy;
-  width: 70px;
+  font-size: 0.8rem;
+  font-family: trattatello;
+  width: 2rem;
   border-radius: 0 10px 0 10px;
   background-color: #39a0ffff;
-  margin-left: 200px;
-  justify-content: flex-end;
-  margin-top: 5px;
+  margin: 0.5rem 0 0 0.5rem;
   pointer-events: none;
 }
 /* ========================== End Divider styling =========================== */
 
 /* ==================== Screen Size Adjustment styling ====================== */
 @media all and (max-width: 1100px) {
-  .container,
-  .content-wrapper,
-  .header {
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-
-@media all and (max-width: 1100px) and (min-width: 940px) {
-  .container,
-  .content-wrapper,
-  .header {
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-
-@media all and (max-width: 940px) and (min-width: 600px) {
-  .container,
-  .content-wrapper,
-  .header {
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-
-@media all and (max-width: 600px) {
-  .container,
+  /* .container,
   .content-wrapper,
   .header,
-  .characters-list {
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
+  #exampleModal,
+  .group-list-item-active { */
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-left: 20px;
+  margin-right: 20px;
 }
+/* } */
+
+@media all and (max-width: 1100px) and (min-width: 940px) {
+  /* .container,
+  .content-wrapper,
+  .header,
+  #exampleModal,
+  .group-list-item-active { */
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/* } */
+
+@media all and (max-width: 940px) and (min-width: 650px) {
+  /* .container,
+  .content-wrapper,
+  .header,
+  #exampleModal,
+  .group-list-item-active { */
+  /* flex-grow: 1; */
+  flex-shrink: 1.5;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/* } */
+
+@media all and (max-width: 650px) {
+  /* .container,
+  .content-wrapper,
+  .header,
+  #exampleModal,
+  .group-list-item-active { */
+  /* flex-grow: 1; */
+  flex-shrink: 2;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/* } */
 
 /* ================== End Screen Size Adjustment styling ==================== */
 
@@ -303,16 +307,13 @@ hr {
 }
 
 .modal-content {
-  /* this is used to center the modal */
-  justify-content: center;
-  margin: auto;
   border-radius: 100px;
   box-shadow: 0 3px 5px rgb(255 255 255 / 100%),
     0 1px 2px rgb(255 255 255 / 100%);
   box-sizing: border-box;
   padding: 15px;
-  width: 600px;
-  height: 600px;
+  width: 25rem;
+  height: 30rem;
   cursor: default; /* remove cursor if you include the modal in the hideModal function */
 }
 
@@ -322,20 +323,20 @@ hr {
   border-bottom: none;
 }
 
-.modal-title {
-  font-size: 100px;
+.modal-title > h1 {
+  font-size: 3rem;
   text-align: right;
   align-items: flex-end;
   align-content: flex-end;
-  margin-top: 40px;
+  margin-top: auto;
   color: black;
-  font-family: fantasy;
+  font-family: trattatello;
 }
 
 .close {
   float: right;
   text-align: right;
-  font-size: 1.2rem;
+  font-size: 100%;
   font-weight: 700;
   line-height: 1;
   color: #000;
@@ -345,7 +346,7 @@ hr {
 
 .modal-header .close {
   padding: 0rem 2rem;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 
 .modal-body {
@@ -353,41 +354,37 @@ hr {
   flex-flow: column;
 }
 
-.modal-img {
+.modal-body > .modal-img {
   align-self: center;
-  margin-top: -30px;
+}
+
+.modal-img {
+  margin-top: -70px;
 }
 
 .att1 {
   display: flex;
-  margin-top: 10%;
+  margin-top: auto;
 }
 
 .att2 {
   display: flex;
-  margin-top: 0%;
+  margin-top: auto;
 }
 
-.att1 .height {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 0px;
-  color: black;
-  font-family: fantasy;
-}
-
-.att1 .weight {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 0px;
-  color: black;
-  font-family: fantasy;
-}
-
+.att1 > p,
 .att2 > p {
-  font-size: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: auto;
+  color: black;
+  font-family: trattatello;
+}
+
+/* .att2 > p {
+  font-size: 30px;
   text-align: center;
   margin-top: 0px;
   color: black;
-  font-family: fantasy;
-}
+  font-family: trattatello;
+} */

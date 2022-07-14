@@ -129,6 +129,7 @@ let pokemonRepository = (function() {
         button.setAttribute('data-toggle', 'modal');
         button.setAttribute('data-target', '.modal');
         button.classList.add('button-class', 'btn-block', 'btn', 'm1');
+
         button.appendChild(indexNum);
         button.appendChild(pokemonImg);
         button.appendChild(span);
