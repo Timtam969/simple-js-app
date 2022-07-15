@@ -125,7 +125,7 @@ let pokemonRepository = (function() {
         pokemonImg.src =
           pokemon.sprites.other['official-artwork'].front_default;
         span.innerText = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-        indexNum.innerText = '# ' + pokemon.id;
+        indexNum.innerText = '#' + pokemon.id.toString().padStart(3, '0');
         button.setAttribute('data-toggle', 'modal');
         button.setAttribute('data-target', '.modal');
         button.classList.add('button-class', 'btn-block', 'btn', 'm1');

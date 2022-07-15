@@ -73,7 +73,7 @@ body {
   color: black;
   border: none;
   text-align: center;
-  font-family: cursive;
+  font-family: 'Splash', cursive;
   font-size: 1.3rem;
 }
 
@@ -86,7 +86,7 @@ body {
   border-radius: 10px;
   transition: 1s;
   text-align: center;
-  font-family: cursive;
+  font-family: 'Splash', cursive;
   font-size: 1.3rem;
   background-color: #888888ff;
 }
@@ -186,7 +186,7 @@ hr {
 .button-class span {
   color: #fff;
   font-size: 1rem;
-  font-family: trattatello;
+  font-family: 'Splash', cursive;
   width: 6rem;
   border-radius: 0 10px 0 10px;
   background-color: #39a0ffff;
@@ -198,7 +198,7 @@ hr {
   align-self: flex-end;
   color: #fff;
   font-size: 0.8rem;
-  font-family: trattatello;
+  font-family: 'Splash', cursive;
   width: 2rem;
   border-radius: 0 10px 0 10px;
   background-color: #39a0ffff;
@@ -330,7 +330,7 @@ hr {
   align-content: flex-end;
   margin-top: auto;
   color: black;
-  font-family: trattatello;
+  font-family: 'Splash', cursive;
 }
 
 .close {
@@ -378,7 +378,7 @@ hr {
   text-align: center;
   margin-top: auto;
   color: black;
-  font-family: trattatello;
+  font-family: 'Splash', cursive;
 }
 
 /* .att2 > p {
