@@ -44,9 +44,10 @@ let pokemonRepository = (function() {
   }
 
   // ------------------ loading and showing Pokemon Date ---------------------- //
-  function loadList() {
+  async function loadList() {
     showLoadingMessage();
-    return fetch(apiUrl)
+    // return fetch(apiUrl)
+    let response = await fetch(apiUrl)
       .then(function(response) {
         return response.json();
       })
@@ -65,10 +66,11 @@ let pokemonRepository = (function() {
       });
   }
 
-  function loadDetails(item) {
+  async function loadDetails(item) {
     showLoadingMessage();
     let pokemon = item.detailsUrl;
-    return fetch(pokemon)
+    // return fetch(pokemon)
+    let response = await fetch(pokemon)
       .then(function(response) {
         return response.json();
       })
@@ -109,8 +111,9 @@ let pokemonRepository = (function() {
 
   // ----------------- Adding the pokemon Characters to the list------------- //
   // ----------------- imaging code provided by Akunna Nwosu ---------------- //
-  function addListItem(p) {
-    return fetch(p.detailsUrl)
+  async function addListItem(p) {
+    // return fetch(p.detailsUrl)
+    let response = await fetch(p.detailsUrl)
       .then(function(response) {
         return response.json();
       })
